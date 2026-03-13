@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta property="og:title" content="양산시 달빛어린이병원 지정을 위한 제언">
+    <meta property="og:description" content="양산시의회 송은영 의원 5분 자유 발언 - 달빛어린이병원 지정 촉구">
+    <meta property="og:image" content="./thumbnail.jpg"> 
+    <meta property="og:type" content="website">
+
+    <title>양산시 달빛어린이병원 지정을 위한 제언</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #000;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            max-width: 450px; 
+            aspect-ratio: 9 / 16;
+            background-color: #1a1a1a;
+            overflow: hidden;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* 2. 재생 전 썸네일: 유튜브 원본 썸네일 표시 */
+        .thumbnail-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* 실제 재생 전에 보여지는 이미지는 유튜브 원본입니다 */
+            background-image: url('https://img.youtube.com/vi/vuusdvx431I/maxresdefault.jpg');
+            background-size: cover;
+            background-position: center;
+            cursor: pointer;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* 3. 제목 오버레이: 썸네일 화면 하단에 배치 */
+        .title-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 80px 20px 40px; /* 상단 그라데이션 여백 */
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.4) 60%, transparent 100%);
+            color: white;
+            text-align: center;
+            pointer-events: none;
+        }
+
+        .video-title {
+            font-size: 20px;
+            font-weight: bold;
+            line-height: 1.4;
+            word-break: keep-all;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+        }
+
+        .play-button {
+            width: 80px;
+            height: 80px;
+            background: rgba(255, 0, 0, 0.9);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 0 20px rgba(0,0,0,0.4);
+            z-index: 11;
+        }
+
+        .play-button::after {
+            content: '';
+            border-style: solid;
+            border-width: 15px 0 15px 25px;
+            border-color: transparent transparent transparent white;
+            margin-left: 7px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="video-container">
+        <div id="thumbnail" class="thumbnail-overlay" onclick="playVideo()">
+            <div class="play-button"></div>
+            
+            <div class="title-overlay">
+                <div class="video-title">양산시 달빛어린이병원 지정을 위한 제언</div>
+            </div>
+        </div>
+
+        <div id="player"></div>
+    </div>
+
+    <script>
+        function playVideo() {
+            // 썸네일과 제목 레이어를 숨깁니다.
+            document.getElementById('thumbnail').style.display = 'none';
+            
+            const playerDiv = document.getElementById('player');
+            playerDiv.innerHTML = `
+                <iframe 
+                    src="https://www.youtube.com/embed/vuusdvx431I?autoplay=1&rel=0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+                </iframe>`;
+        }
+    </script>
+</body>
+</html>
